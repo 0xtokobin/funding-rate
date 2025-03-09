@@ -3,15 +3,14 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # 设置要触发部署的分支
+      - main  # 如果您的默认分支是 master，请改为 master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -21,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build project
+      - name: Build
         run: npm run build
 
       - name: Deploy to GitHub Pages
